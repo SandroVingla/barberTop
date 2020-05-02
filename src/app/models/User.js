@@ -11,9 +11,11 @@ class User extends Model {
             password_hash: Sequelize.STRING,
             provider: Sequelize.BOOLEAN,
         },
+
         {
             sequelize,
         }
+
         );
         this.addHook('beforeSave', async user => {
             if(user.password) {
@@ -21,6 +23,10 @@ class User extends Model {
             }
         });
         return this;
+    }
+
+    static associate(models) {
+        this.belongsToMany(models.File, {foreignKey: 'avatar_id'} )
     }
 
     checkPassword(password) {
