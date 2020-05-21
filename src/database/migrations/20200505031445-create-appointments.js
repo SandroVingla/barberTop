@@ -7,15 +7,16 @@
 
         return queryInterface.createTable('appointments', {
             id: {
-                type:Sequelize.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
               },
               date: {
-                  type: Sequelize.STRING,
+                  type: Sequelize.DATE,
                   allowNull: false,
               },
+
               user_id: {
                     type: Sequelize.INTEGER,
                     references: { model: 'users', key: 'id'},
